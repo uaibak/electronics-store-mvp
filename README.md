@@ -42,40 +42,108 @@ The UI is built around the following design system:
 ## Project Structure
 
 ```text
-src/
-+-- app/
-�   +-- admin/
-�   +-- api/
-�   +-- cart/
-�   +-- category/[category]/
-�   +-- checkout/
-�   +-- order-confirmation/
-�   +-- product/[slug]/
-�   +-- static-pages/
-�   +-- globals.css
-�   +-- layout.tsx
-�   +-- page.tsx
-�   +-- robots.ts
-�   +-- sitemap.ts
-+-- components/
-�   +-- admin/
-�   +-- pages/
-�   +-- providers/
-�   +-- ui/
-�   +-- shared UI components
-+-- lib/
-�   +-- auth.ts
-�   +-- constants.ts
-�   +-- data.ts
-�   +-- db.js
-�   +-- utils.ts
-+-- models/
-�   +-- Order.js
-�   +-- Product.js
-+-- types/
-    +-- global.d.ts
-scripts/
-+-- seed.js
+.
++-- .env.example
++-- .env.local
++-- .gitignore
++-- LICENSE
++-- README.md
++-- components.json
++-- middleware.ts
++-- next-env.d.ts
++-- next.config.ts
++-- package.json
++-- postcss.config.js
++-- scripts/
+�   +-- seed.js
++-- src/
+�   +-- app/
+�   �   +-- admin/
+�   �   �   +-- login/
+�   �   �   �   +-- page.tsx
+�   �   �   +-- orders/
+�   �   �   �   +-- page.tsx
+�   �   �   +-- products/
+�   �   �   �   +-- page.tsx
+�   �   �   +-- page.tsx
+�   �   +-- api/
+�   �   �   +-- admin/
+�   �   �   �   +-- login/
+�   �   �   �   �   +-- route.ts
+�   �   �   �   +-- logout/
+�   �   �   �       +-- route.ts
+�   �   �   +-- orders/
+�   �   �   �   +-- [id]/
+�   �   �   �   �   +-- route.ts
+�   �   �   �   +-- route.ts
+�   �   �   +-- products/
+�   �   �   �   +-- [id]/
+�   �   �   �   �   +-- route.ts
+�   �   �   �   +-- route.ts
+�   �   �   +-- test/
+�   �   �       +-- route.ts
+�   �   +-- cart/
+�   �   �   +-- page.tsx
+�   �   +-- category/
+�   �   �   +-- [category]/
+�   �   �       +-- page.tsx
+�   �   +-- checkout/
+�   �   �   +-- page.tsx
+�   �   +-- order-confirmation/
+�   �   �   +-- page.tsx
+�   �   +-- product/
+�   �   �   +-- [slug]/
+�   �   �       +-- page.tsx
+�   �   +-- static-pages/
+�   �   �   +-- about/
+�   �   �   �   +-- page.tsx
+�   �   �   +-- contact/
+�   �   �   �   +-- page.tsx
+�   �   �   +-- policies/
+�   �   �       +-- page.tsx
+�   �   +-- globals.css
+�   �   +-- layout.tsx
+�   �   +-- not-found.tsx
+�   �   +-- page.tsx
+�   �   +-- robots.ts
+�   �   +-- sitemap.ts
+�   +-- components/
+�   �   +-- admin/
+�   �   �   +-- admin-login-form.tsx
+�   �   �   +-- admin-logout-button.tsx
+�   �   �   +-- admin-orders-manager.tsx
+�   �   �   +-- admin-products-manager.tsx
+�   �   +-- pages/
+�   �   �   +-- cart-client-page.tsx
+�   �   �   +-- checkout-client-page.tsx
+�   �   +-- providers/
+�   �   �   +-- cart-provider.tsx
+�   �   +-- ui/
+�   �   �   +-- button.tsx
+�   �   �   +-- input.tsx
+�   �   �   +-- label.tsx
+�   �   +-- Button.jsx
+�   �   +-- Container.tsx
+�   �   +-- Footer.jsx
+�   �   +-- Form.tsx
+�   �   +-- Input.jsx
+�   �   +-- Navbar.jsx
+�   �   +-- product-actions.tsx
+�   �   +-- ProductCard.jsx
+�   +-- lib/
+�   �   +-- api.ts
+�   �   +-- auth.ts
+�   �   +-- constants.ts
+�   �   +-- data.ts
+�   �   +-- db.js
+�   �   +-- utils.ts
+�   +-- models/
+�   �   +-- Order.js
+�   �   +-- Product.js
+�   +-- types/
+�       +-- global.d.ts
++-- tailwind.config.ts
++-- tsconfig.json
 ```
 
 ## Features
