@@ -1,4 +1,4 @@
-# Pakistan Electronics Store
+﻿# Pakistan Electronics Store
 
 Production-ready Next.js App Router e-commerce application for a custom electronics store in Pakistan. The project includes a customer storefront, MongoDB-backed product and order APIs, JWT-based admin access, responsive Tailwind UI, SEO metadata, and a repeatable seed flow for local testing.
 
@@ -41,109 +41,108 @@ The UI is built around the following design system:
 
 ## Project Structure
 
-```text
+```
 .
-- .env.example
-- .env.local
-- .gitignore
-- LICENSE
-- README.md
-- components.json
-- middleware.ts
-- next-env.d.ts
-- next.config.ts
-- package.json
-- postcss.config.js
-- tailwind.config.ts
-- tsconfig.json
-- scripts/
-  - seed.js
-- src/
-  - app/
-    - admin/
-      - login/
-        - page.tsx
-      - orders/
-        - page.tsx
-      - products/
-        - page.tsx
-      - page.tsx
-    - api/
-      - admin/
-        - login/
-          - route.ts
-        - logout/
-          - route.ts
-      - orders/
-        - [id]/
-          - route.ts
-        - route.ts
-      - products/
-        - [id]/
-          - route.ts
-        - route.ts
-      - test/
-        - route.ts
-    - cart/
-      - page.tsx
-    - category/
-      - [category]/
-        - page.tsx
-    - checkout/
-      - page.tsx
-    - order-confirmation/
-      - page.tsx
-    - product/
-      - [slug]/
-        - page.tsx
-    - static-pages/
-      - about/
-        - page.tsx
-      - contact/
-        - page.tsx
-      - policies/
-        - page.tsx
-    - globals.css
-    - layout.tsx
-    - not-found.tsx
-    - page.tsx
-    - robots.ts
-    - sitemap.ts
-  - components/
-    - admin/
-      - admin-login-form.tsx
-      - admin-logout-button.tsx
-      - admin-orders-manager.tsx
-      - admin-products-manager.tsx
-    - pages/
-      - cart-client-page.tsx
-      - checkout-client-page.tsx
-    - providers/
-      - cart-provider.tsx
-    - ui/
-      - button.tsx
-      - input.tsx
-      - label.tsx
-    - Button.jsx
-    - Container.tsx
-    - Footer.jsx
-    - Form.tsx
-    - Input.jsx
-    - Navbar.jsx
-    - product-actions.tsx
-    - ProductCard.jsx
-  - lib/
-    - api.ts
-    - auth.ts
-    - constants.ts
-    - data.ts
-    - db.js
-    - utils.ts
-  - models/
-    - Order.js
-    - Product.js
-  - types/
-    - global.d.ts
+├── .env.example
+├── .gitignore
+├── LICENSE
+├── README.md
+├── components.json
+├── middleware.ts
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── postcss.config.js
+├── scripts/
+│   └── seed.js
+├── src/
+│   ├── app/
+│   │   ├── admin/
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx
+│   │   │   ├── orders/
+│   │   │   │   └── page.tsx
+│   │   │   ├── products/
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── api/
+│   │   │   ├── admin/
+│   │   │   │   ├── login/
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── logout/
+│   │   │   │       └── route.ts
+│   │   │   ├── orders/
+│   │   │   │   ├── [id]/
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── route.ts
+│   │   │   ├── products/
+│   │   │   │   ├── [id]/
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── route.ts
+│   │   │   └── test/
+│   │   │       └── route.ts
+│   │   ├── cart/
+│   │   │   └── page.tsx
+│   │   ├── category/
+│   │   │   └── [category]/
+│   │   │       └── page.tsx
+│   │   ├── checkout/
+│   │   │   └── page.tsx
+│   │   ├── order-confirmation/
+│   │   │   └── page.tsx
+│   │   ├── product/
+│   │   │   └── [slug]/
+│   │   │       └── page.tsx
+│   │   ├── static-pages/
+│   │   │   ├── about/
+│   │   │   │   └── page.tsx
+│   │   │   ├── contact/
+│   │   │   │   └── page.tsx
+│   │   │   └── policies/
+│   │   │       └── page.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   ├── page.tsx
+│   │   ├── robots.ts
+│   │   └── sitemap.ts
+│   ├── components/
+│   │   ├── admin/
+│   │   │   ├── admin-login-form.tsx
+│   │   │   ├── admin-logout-button.tsx
+│   │   │   ├── admin-orders-manager.tsx
+│   │   │   └── admin-products-manager.tsx
+│   │   ├── pages/
+│   │   │   ├── cart-client-page.tsx
+│   │   │   └── checkout-client-page.tsx
+│   │   ├── providers/
+│   │   │   └── cart-provider.tsx
+│   │   ├── ui/
+│   │   │   ├── button.tsx
+│   │   │   ├── input.tsx
+│   │   │   └── label.tsx
+│   │   ├── Button.jsx
+│   │   ├── Container.tsx
+│   │   ├── Footer.jsx
+│   │   ├── Form.tsx
+│   │   ├── Input.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── product-actions.tsx
+│   │   └── ProductCard.jsx
+│   ├── lib/
+│   │   ├── api.ts
+│   │   ├── auth.ts
+│   │   ├── constants.ts
+│   │   ├── data.ts
+│   │   ├── db.js
+│   │   └── utils.ts
+│   ├── models/
+│   │   ├── Order.js
+│   │   └── Product.js
+│   └── types/
+│       └── global.d.ts
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
 ## Features
