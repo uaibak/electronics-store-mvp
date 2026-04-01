@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/Button";
+import { toast } from "sonner";
 import { formatPrice } from "@/lib/utils";
 
 const statuses = ["Pending", "Confirmed", "Packed", "Delivered", "Cancelled"];
@@ -17,8 +17,16 @@ export default function AdminOrdersManager({ orders }: { orders: any[] }) {
     });
 
     if (response.ok) {
+      toast.success("Order updated", {
+        description: `The order status is now ${status}.`
+      });
       router.refresh();
+      return;
     }
+
+    toast.error("Update failed", {
+      description: "We could not update the order status. Please try again."
+    });
   }
 
   return (

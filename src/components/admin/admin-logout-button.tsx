@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { Button } from "@/components/Button";
 
 export default function AdminLogoutButton() {
@@ -8,6 +9,9 @@ export default function AdminLogoutButton() {
 
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });
+    toast.success("Signed out", {
+      description: "You have been logged out of the admin dashboard."
+    });
     router.push("/admin/login");
     router.refresh();
   }

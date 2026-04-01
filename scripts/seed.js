@@ -1,4 +1,4 @@
-const fs = require("fs");
+﻿const fs = require("fs");
 const path = require("path");
 const dns = require("node:dns");
 const mongoose = require("mongoose");
@@ -92,7 +92,7 @@ const products = [
     name: "Turbo Stand Fan 18 Inch",
     price: 16499,
     category: "Fans",
-    image: "https://images.unsplash.com/photo-1616628182509-6f0b7f89ef39?auto=format&fit=crop&w=1200&q=80",
+    image: "https://picsum.photos/seed/turbo-stand-fan/1200/900",
     description: "High-speed pedestal fan with adjustable height, oscillation, and multiple speed controls for larger rooms.",
     stock: 18
   },
@@ -116,7 +116,7 @@ const products = [
     name: "Desert Air Cooler 60L",
     price: 42999,
     category: "Air Coolers",
-    image: "https://images.unsplash.com/photo-1629042306547-b9df1c0d70d2?auto=format&fit=crop&w=1200&q=80",
+    image: "https://picsum.photos/seed/desert-air-cooler/1200/900",
     description: "Large-capacity air cooler with honeycomb cooling pads and strong air throw for hot summer conditions.",
     stock: 12
   },

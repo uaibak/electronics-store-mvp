@@ -1,15 +1,15 @@
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { z } from "zod";
 import connectDB from "@/lib/db";
 import Product from "@/models/Product";
 import { getAdminSession } from "@/lib/auth";
+import { isValidProductImage } from "@/lib/utils";
 
 const productSchema = z.object({
   name: z.string().min(3),
   price: z.coerce.number().min(1),
   category: z.enum(["Fans", "Irons", "Air Coolers", "Washing Machines"]),
-  image: z.string().url(),
+  image: z.string().refine((value) => isValidProductImage(value), "Provide a valid image URL or uploaded image path."),
   description: z.string().min(10),
   stock: z.coerce.number().min(0)
 });

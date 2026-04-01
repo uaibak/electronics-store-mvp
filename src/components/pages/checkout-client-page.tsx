@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { FormField, TextAreaField } from "@/components/Form";
@@ -17,6 +18,9 @@ export default function CheckoutClientPage() {
     event.preventDefault();
 
     if (!items.length) {
+      toast.warning("Cart is empty", {
+        description: "Add at least one product before placing an order."
+      });
       return;
     }
 
@@ -42,7 +46,14 @@ export default function CheckoutClientPage() {
 
       const order = await response.json();
       clearCart();
+      toast.success("Order placed", {
+        description: "Your order was submitted successfully. We will confirm it manually shortly."
+      });
       router.push(`/order-confirmation?orderId=${order._id}`);
+    } catch {
+      toast.error("Order failed", {
+        description: "We could not place your order. Please try again."
+      });
     } finally {
       setLoading(false);
     }

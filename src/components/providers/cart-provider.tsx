@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
@@ -16,7 +16,7 @@ type CartContextValue = {
   items: CartItem[];
   itemCount: number;
   totalPrice: number;
-  addItem: (item: Omit<CartItem, "quantity">) => void;
+  addItem: (item: Omit<CartItem, "quantity">) => boolean;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
@@ -42,6 +42,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const value = useMemo(() => {
     const addItem = (item: Omit<CartItem, "quantity">) => {
+      const exists = items.some((entry) => entry._id === item._id);
+
       setItems((current) => {
         const existing = current.find((entry) => entry._id === item._id);
         if (existing) {
@@ -51,6 +53,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         }
         return [...current, { ...item, quantity: 1 }];
       });
+
+      return exists;
     };
 
     const removeItem = (id: string) => {

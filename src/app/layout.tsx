@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AppToaster from "@/components/providers/app-toaster";
 import { CartProvider } from "@/components/providers/cart-provider";
 
 const inter = Inter({
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
+          <AppToaster />
         </CartProvider>
       </body>
     </html>

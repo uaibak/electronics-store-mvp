@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/Button";
 import { FormField } from "@/components/Form";
 
@@ -29,9 +30,15 @@ export default function AdminLoginForm() {
 
     if (!response.ok) {
       setError("Invalid credentials.");
+      toast.error("Login failed", {
+        description: "The email or password is incorrect."
+      });
       return;
     }
 
+    toast.success("Welcome back", {
+      description: "You are now signed in to the admin dashboard."
+    });
     router.push("/admin");
     router.refresh();
   }
@@ -39,7 +46,7 @@ export default function AdminLoginForm() {
   return (
     <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
       <FormField label="Email" id="email" name="email" type="email" required placeholder="admin@example.com" />
-      <FormField label="Password" id="password" name="password" type="password" required placeholder="��������" />
+      <FormField label="Password" id="password" name="password" type="password" required placeholder="********" />
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
       <Button className="w-full" disabled={loading}>{loading ? "Signing in..." : "Sign In"}</Button>
     </form>

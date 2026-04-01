@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import ProductActions from "@/components/product-actions";
 import { getProductBySlug } from "@/lib/data";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, resolveProductImage } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: `${product.name} | Electronics Store`,
       description: product.description,
-      images: [{ url: product.image, alt: product.name }]
+      images: [{ url: resolveProductImage(product.image), alt: product.name }]
     }
   };
 }
@@ -39,7 +39,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     <Container className="py-16">
       <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
         <div className="relative min-h-[420px] overflow-hidden rounded-[32px] border border-primary/10 bg-white shadow-soft">
-          <Image src={product.image} alt={product.name} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+          <Image src={resolveProductImage(product.image)} alt={product.name} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
         </div>
         <div className="space-y-6">
           <div>
